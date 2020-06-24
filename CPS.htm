@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8" />
+        <title>測CPS</title>
+        <style type = "text/css">
+            #title{
+                background-color: rgb(0, 2, 102);
+                text-align: center;
+                color: aliceblue;
+                font-size: 50px;
+                font-weight: bold;
+                padding: 10px;
+            }
+            #clickButton{
+                width: 1000px;
+                height: 300px;
+                font-size: 50px;
+                margin-top: 60px;                
+            }
+            #clickCountText{
+                text-align: center;
+                font-size: 20px;
+            }
+            #timeCountText{
+                text-align: center;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body style="margin: 0px;background-color: darkgrey;">
+        <div id="title">測你的CPS</div>
+        <div style="text-align: center;"><button id="clickButton" type="submit" onclick="Click()">點我開始</button></div>
+        <p id="clickCountText">點擊次數: <span id="clickCount">0</span></p>
+        <p id="timeCountText">剩餘時間: <span id="timeCount">10.00</span></p>
+    </body>
+
+    <script type="text/javascript">
+        let startCount = 4;
+        let isStart = false;
+        let count = 0;
+        let time = 10000;
+
+        function Click(){
+            if(startCount==4) StartCount();        
+            if(time<=0 || !isStart) return;
+
+            clickCount.innerHTML = count+=1;       
+        }
+
+        function StartCount(){
+            if(startCount==1) {
+                clickButton.innerHTML = "狂點我!";
+                isStart = true;
+                TimeCount();   
+                return;
+            }
+
+            clickButton.innerHTML = startCount-=1;  
+            setTimeout(StartCount, 1000);
+        }
+
+        function TimeCount(){       
+            time-=10; 
+            timeCount.innerHTML = time <= 20 ? "0.00" : time/1000;  
+            if(time>0){       
+                setTimeout(TimeCount, 10);    
+                return;
+            }     
+
+            clickButton.innerHTML = "時間到!!";  
+            const CPS = count/=10;                                
+            alert("你的CPS為: "+CPS);
+            location.reload();            
+        }
+    </script>
+</html>
