@@ -1,4 +1,5 @@
 # CPS-test
-test your cps!
+Test your cps! <br>
+測試你的CPS!
 
-link: https://weimino123.github.io/CPS-test/CPS.htm
+link: https://minobear.github.io/CPS-test/CPS.htm
