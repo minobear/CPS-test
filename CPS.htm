@@ -132,7 +132,7 @@
 
         function Complate(){
             clickButton.innerHTML = "載入中...";  
-            const CPS = (count/mode)%1==0?((count/mode)+".0"):CPS;
+            const CPS = (count/mode)%1==0?((count/mode)+".0"):count/mode;
             const Achievement = CPS<7?"在麥塊PVP界裡, 你只是個菜鳥...":CPS<9?"在麥塊PVP界裡, 你只是個普通人和大家差不多":CPS<11?"在麥塊PVP界裡, 你比普遍的人還強了呢!":CPS<14?"在麥塊PVP界裡, 你是位中高等級的玩家!":CPS<16?"在麥塊PVP界裡, 你已經是個高手了!!":CPS<20?"OMG... 在麥塊PVP界裡, 你是位菁英玩家啊!!!":"靠杯, 這一定不是你自己點出來的=_="                 
             alert("你的CPS為: "+CPS+"\n\n"+Achievement);
             location.reload();  
