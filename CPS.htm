@@ -31,14 +31,19 @@
                 text-align: center;
                 padding-right: 50px;
                 font-size: 20px;
-            }          
+            } 
+            #timeCount{
+                position: absolute;
+                padding-left: 5px;
+                padding-top: 1px;
+            }  
         </style>
     </head>
     <body style="margin: 0px;background-color: darkgrey;">
         <div id="title">測你的CPS<img id="Image" src="mino_noob.png" /></div>
         <div style="text-align: center;"><button id="clickButton" type="submit" onclick="Click()">點我開始</button></div>
         <p id="clickCountText">點擊次數: <span id="clickCount">0</span></p>
-        <p id="timeCountText">剩餘時間: <span id="timeCount" style="position: absolute;padding-left: 5px;">10.00</span></p>        
+        <p id="timeCountText">剩餘時間: <span id="timeCount">10.00</span></p>        
     </body>
 
     <script type="text/javascript">
