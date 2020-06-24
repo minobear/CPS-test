@@ -1,0 +1,57 @@
+.button{
+    text-align: center;
+}
+#title{
+    background-color: rgb(0, 2, 102);
+    text-align: center;
+    color: aliceblue;
+    font-size: 50px;
+    font-weight: bold;
+    padding: 10px;
+}
+#Image{
+    padding-left: 10px;
+    position: absolute;
+    top: 10px;
+}
+#clickButton{
+    width: 1000px;
+    height: 300px;
+    font-size: 50px;
+    margin-top: 30px;  
+    font-weight: bold;              
+}
+#clickCountText{
+    text-align: center;
+    font-size: 30px;
+    padding-right: 65px;
+}
+#timeCountText{                              
+    text-align: center;               
+    font-size: 30px;
+    padding-left: 70px;
+} 
+#clickCount{
+    position: absolute;
+    padding-left: 1px;
+    padding-top: 2px;
+}             
+#timeCount{
+    position: absolute;
+    padding-left: 5px;
+    padding-top: 2px;
+}  
+#Explanation{
+    text-align: center;
+    font-size: 18px;
+    margin-top: 230px;           
+}
+main{
+    display: flex;  
+    justify-content: center;
+    margin-top: 30px;                                      
+}
+main>.button{
+    flex: none;
+    width: 60px;             
+}

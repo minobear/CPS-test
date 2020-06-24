@@ -1,68 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset = "UTF-8" />
-        <title>測CPS</title>      
-        <style type = "text/css">
-            .button{
-                text-align: center;
-            }
-            #title{
-                background-color: rgb(0, 2, 102);
-                text-align: center;
-                color: aliceblue;
-                font-size: 50px;
-                font-weight: bold;
-                padding: 10px;
-            }
-            #Image{
-                padding-left: 10px;
-                position: absolute;
-                top: 10px;
-            }
-            #clickButton{
-                width: 1000px;
-                height: 300px;
-                font-size: 50px;
-                margin-top: 30px;  
-                font-weight: bold;              
-            }
-            #clickCountText{
-                text-align: center;
-                font-size: 30px;
-                padding-right: 65px;
-            }
-            #timeCountText{                              
-                text-align: center;               
-                font-size: 30px;
-                padding-left: 70px;
-            } 
-            #clickCount{
-                position: absolute;
-                padding-left: 1px;
-                padding-top: 2px;
-            }             
-            #timeCount{
-                position: absolute;
-                padding-left: 5px;
-                padding-top: 2px;
-            }  
-            #Explanation{
-                text-align: center;
-                font-size: 18px;
-                margin-top: 230px;           
-            }
-            main{
-                display: flex;  
-                justify-content: center;
-                margin-top: 30px;                                      
-            }
-            main>.button{
-                flex: none;
-                width: 60px;             
-            }
-        </style>
+        <meta charset = "utf-8" />
+        <title>測CPS</title>     
+        <link rel="stylesheet" href="style.css">
+        <script src="main.js"></script>
     </head>
+
     <body style="margin: 0px;background-color: darkgrey;">
         <div id="title">測你的CPS<img id="Image" src="mino_noob.png" /></div>
         <main>          
@@ -87,55 +31,4 @@
             如果沒了精準度, 點再快也是徒勞無功的唷...<br>
         </div>     
     </body>
-
-    <script type="text/javascript">
-        let startCount = 4;
-        let isStart = false;
-        let count = 0;
-        let time = 10000;
-        let mode = 10;
-
-        function changeSec(sec){
-            mode = sec;
-            time = sec*1000;
-            timeCount.innerHTML = time/1000+".00";
-        }
-
-        function Click(){
-            if(startCount==4) StartCount();        
-            if(time<=0 || !isStart) return;
-
-            clickCount.innerHTML = count+=1;       
-        }
-
-        function StartCount(){
-            if(startCount==1) {
-                clickButton.innerHTML = "狂點我!";
-                isStart = true;
-                TimeCount();   
-                return;
-            }
-
-            clickButton.innerHTML = startCount-=1;  
-            setTimeout(StartCount, 1000);
-        }
-
-        function TimeCount(){       
-            time-=10; 
-            timeCount.innerHTML = time <= 20 ? "0.00" : time/1000;  
-            if(time>0){       
-                setTimeout(TimeCount, 10);    
-                return;
-            }     
-            Complate();
-        }
-
-        function Complate(){
-            clickButton.innerHTML = "載入中...";  
-            const CPS = (count/mode)%1==0?((count/mode)+".0"):count/mode;
-            const Achievement = CPS<7?"在麥塊PVP界裡, 你只是個菜鳥...":CPS<9?"在麥塊PVP界裡, 你只是個普通人和大家差不多":CPS<11?"在麥塊PVP界裡, 你比普遍的人還強了呢!":CPS<14?"在麥塊PVP界裡, 你是位中高等級的玩家!":CPS<16?"在麥塊PVP界裡, 你已經是個高手了!!":CPS<20?"OMG... 在麥塊PVP界裡, 你是位菁英玩家啊!!!":"靠杯, 這一定不是你自己點出來的=_="                 
-            alert("你的CPS為: "+CPS+"\n\n"+Achievement);
-            location.reload();  
-        }
-    </script>
 </html>
