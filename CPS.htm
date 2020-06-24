@@ -12,6 +12,11 @@
                 font-weight: bold;
                 padding: 10px;
             }
+            #Image{
+                padding-left: 10px;
+                position: absolute;
+                top: 10px;
+            }
             #clickButton{
                 width: 1000px;
                 height: 300px;
@@ -29,10 +34,10 @@
         </style>
     </head>
     <body style="margin: 0px;background-color: darkgrey;">
-        <div id="title">測你的CPS</div>
+        <div id="title">測你的CPS<img id="Image" src="mino_noob.png" /></div>
         <div style="text-align: center;"><button id="clickButton" type="submit" onclick="Click()">點我開始</button></div>
         <p id="clickCountText">點擊次數: <span id="clickCount">0</span></p>
-        <p id="timeCountText">剩餘時間: <span id="timeCount">10.00</span></p>
+        <p id="timeCountText">剩餘時間: <span id="timeCount">10.00</span></p>        
     </body>
 
     <script type="text/javascript">
@@ -68,9 +73,9 @@
                 return;
             }     
 
-            clickButton.innerHTML = "重新載入中...";  
+            clickButton.innerHTML = "時間到!!";  
             const CPS = count/=10; 
-            const Achievement = CPS<6?"你只是個菜鳥...":CPS<8?"你是個普通人, 跟大家差不多":CPS<10?"你比普通人還強了呢!":CPS<13?"你是位中高等玩家!":CPS<16?"你是個高手啊!!":CPS<20?"ONG 你是個菁英玩家!!!":"這一定不是你點出來的=_="                 
+            const Achievement = CPS<6?"你只是個菜鳥...":CPS<8?"你是個普通人, 跟大家差不多":CPS<10?"你比普通人還強了呢!":CPS<12?"唉唷, 不錯喔!":CPS<15?"你是個高手阿!":"ONG 你是個菁英玩家!!"                 
             alert("你的CPS為: "+CPS+"\n\n"+Achievement);
             location.reload();            
         }
