@@ -4,6 +4,9 @@
         <meta charset = "UTF-8" />
         <title>測CPS</title>      
         <style type = "text/css">
+            .button{
+                text-align: center;
+            }
             #title{
                 background-color: rgb(0, 2, 102);
                 text-align: center;
@@ -21,7 +24,7 @@
                 width: 1000px;
                 height: 300px;
                 font-size: 50px;
-                margin-top: 60px;  
+                margin-top: 30px;  
                 font-weight: bold;              
             }
             #clickCountText{
@@ -32,16 +35,16 @@
             #timeCountText{                              
                 text-align: center;               
                 font-size: 30px;
-                padding-left: 65px;
+                padding-left: 70px;
             } 
+            #clickCount{
+                position: absolute;
+                padding-left: 1px;
+                padding-top: 2px;
+            }             
             #timeCount{
                 position: absolute;
                 padding-left: 5px;
-                padding-top: 2px;
-            }  
-            #clickCount{
-                position: absolute;
-                padding-left: 3px;
                 padding-top: 2px;
             }  
             #Explanation{
@@ -49,16 +52,34 @@
                 font-size: 18px;
                 margin-top: 230px;           
             }
+            main{
+                display: flex;  
+                justify-content: center;
+                margin-top: 30px;                                      
+            }
+            main>.button{
+                flex: none;
+                width: 60px;             
+            }
         </style>
     </head>
     <body style="margin: 0px;background-color: darkgrey;">
         <div id="title">測你的CPS<img id="Image" src="mino_noob.png" /></div>
-        <div style="text-align: center;"><button id="clickButton" type="submit" onclick="Click()">點我開始</button></div>
+        <main>          
+            <div class="button"><button class="button" onclick="changeSec(1)">1秒</button></div>
+            <div class="button"><button class="button" onclick="changeSec(5)">5秒</button></div>
+            <div class="button"><button class="button" onclick="changeSec(10)">10秒</button></div>
+            <div class="button"><button class="button" onclick="changeSec(15)">15秒</button></div>
+            <div class="button"><button class="button" onclick="changeSec(30)">30秒</button></div>
+            <div class="button"><button class="button" onclick="changeSec(60)">60秒</button></div>
+            <div class="button"><button class="button" onclick="changeSec(100)">100秒</button></div>
+        </main>       
+        <div class="button"><button id="clickButton" type="submit" onclick="Click()">點我開始</button></div>
         <p id="clickCountText">點擊次數: <span id="clickCount">0</span>
             <span id="timeCountText">剩餘時間: <span id="timeCount">10.00</span></span>
         </p>        
         <div id="Explanation">
-            <spon style="color: rgb(201, 0, 0);">CPS：Click Per Second</spon><br>
+            <spon style="color: rgb(201, 0, 0);">【CPS：Click Per Second】</spon><br>
             意旨你在一秒內平均的點擊次數<br>
             是在麥塊PVP界裡常常會被大家拿來比較的數值喔!<p>
             ※點速越高代表你能在相同時間內提高擊中敵人的機率, 相對的輸出傷害就會有所提升!<br>
@@ -72,6 +93,13 @@
         let isStart = false;
         let count = 0;
         let time = 10000;
+        let mode = 10;
+
+        function changeSec(sec){
+            mode = sec;
+            time = sec*1000;
+            timeCount.innerHTML = time/1000+".00";
+        }
 
         function Click(){
             if(startCount==4) StartCount();        
@@ -99,12 +127,15 @@
                 setTimeout(TimeCount, 10);    
                 return;
             }     
+            Complate();
+        }
 
+        function Complate(){
             clickButton.innerHTML = "載入中...";  
-            const CPS = count/=10; 
+            const CPS = (count/mode)%1==0?((count/mode)+".0"):CPS;
             const Achievement = CPS<7?"在麥塊PVP界裡, 你只是個菜鳥...":CPS<9?"在麥塊PVP界裡, 你只是個普通人和大家差不多":CPS<11?"在麥塊PVP界裡, 你比普遍的人還強了呢!":CPS<14?"在麥塊PVP界裡, 你是位中高等級的玩家!":CPS<16?"在麥塊PVP界裡, 你已經是個高手了!!":CPS<20?"OMG... 在麥塊PVP界裡, 你是位菁英玩家啊!!!":"靠杯, 這一定不是你自己點出來的=_="                 
             alert("你的CPS為: "+CPS+"\n\n"+Achievement);
-            location.reload();            
+            location.reload();  
         }
     </script>
 </html>
