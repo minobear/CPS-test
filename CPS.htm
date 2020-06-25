@@ -2,13 +2,14 @@
 <html>
     <head>
         <meta charset = "utf-8" />
-        <title>測CPS</title>     
+        <title>測CPS</title>  
+        <link rel="shortcut icon" href="img\favicon.ico"/>   
         <link rel="stylesheet" href="style.css">
         <script src="main.js"></script>
     </head>
 
     <body style="margin: 0px;background-color: darkgrey;">
-        <div id="title">測你的CPS<img id="Image" src="mino_noob.png" /></div>
+        <div id="title">測你的CPS<img id="Image" src="img\mino_noob.png" /></div>
         <main>          
             <div class="button"><button class="button" onclick="changeSec(1)">1秒</button></div>
             <div class="button"><button class="button" onclick="changeSec(5)">5秒</button></div>
@@ -21,14 +22,16 @@
         <div class="button"><button id="clickButton" type="submit" onclick="Click()">點我開始</button></div>
         <p id="clickCountText">點擊次數: <span id="clickCount">0</span>
             <span id="timeCountText">剩餘時間: <span id="timeCount">10.00</span></span>
-        </p>        
+        </p>    
+        <hr style="margin-top: 210px;" />    
         <div id="Explanation">
             <spon style="color: rgb(201, 0, 0);">【CPS：Click Per Second】</spon><br>
             意旨你在一秒內平均的點擊次數<br>
             是在麥塊PVP界裡常常會被大家拿來比較的數值喔!<p>
             ※點速越高代表你能在相同時間內提高擊中敵人的機率, 相對的輸出傷害就會有所提升!<br>
             但點速雖然有了, 精準度(Aim)還是最最最重要的喔!!<br>
-            如果沒了精準度, 點再快也是徒勞無功的唷...<br>
-        </div>     
+            如果沒了精準度, 點再快也是徒勞無功的唷...<p>           
+        </div> 
+        <div style="font-size: 15px;position: absolute;right: 1px;bottom: 1px;">Created by @MINO</div>            
     </body>
 </html>

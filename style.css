@@ -19,7 +19,7 @@
     height: 300px;
     font-size: 50px;
     margin-top: 30px;  
-    font-weight: bold;              
+    font-weight: bold;          
 }
 #clickCountText{
     text-align: center;
@@ -44,12 +44,12 @@
 #Explanation{
     text-align: center;
     font-size: 18px;
-    margin-top: 230px;           
+    margin-top: 20px;           
 }
 main{
     display: flex;  
     justify-content: center;
-    margin-top: 30px;                                      
+    margin-top: 25px;                                      
 }
 main>.button{
     flex: none;
