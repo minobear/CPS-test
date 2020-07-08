@@ -103,6 +103,12 @@ function refreshLeaderboard(){
     $("leaderboard")
 }
 
+function clearLeaderboard(){
+    localStorage.removeItem("leaderboard");
+    leaderboard = [];
+    setTimeout(refreshLeaderboard, 1);
+}
+
 function ResetAll(){
     startCount = 4;           
     time = mode*1000;

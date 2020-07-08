@@ -9,7 +9,7 @@
         <script src="main.js"></script>        
     </head>
 
-    <body style="margin: 0px;background-color: darkgrey; user-select: none;">
+    <body oncontextmenu="return false;" style="margin: 0px;background-color: darkgrey; user-select: none;">
         <div id="title">測你的CPS<img id="Image" src="img\mino_noob.png" /></div>
         <main>          
             <div class="button"><button class="button" onclick="changeSec(1)">1秒</button></div>
@@ -33,7 +33,7 @@
             </table>           
         </span> 
         <div id="clear">
-            <button>123</button>
+            <button onclick="clearLeaderboard()">清除紀錄</button>
         </div>     
         <hr style="margin-top: 210px;" />    
         <div id="Explanation">
