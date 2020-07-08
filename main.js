@@ -5,6 +5,10 @@ let time = 10000;
 let mode = 10;
 let buttonSize = 50;
 let buttonRed = 0;
+let leaderboard = []
+
+leaderboard = JSON.parse(localStorage.getItem("leaderboard"));
+setTimeout(refreshLeaderboard, 1);
 
 function changeSec(sec){
     let timeCount = document.getElementById("timeCount");
@@ -69,9 +73,30 @@ function Complate(){
     const CPS_STR = CPS%1==0?CPS+".0":CPS;
     const Achievement = CPS<7?"在麥塊PVP界裡, 你只是個菜鳥...":CPS<9?"在麥塊PVP界裡, 你只是個普通人和大家差不多":CPS<11?"在麥塊PVP界裡, 你比普遍的人還強了呢!":CPS<15?"在麥塊PVP界裡, 你是位中高等級的玩家!":CPS<18?"在麥塊PVP界裡, 你已經是個高手了!!":CPS<25?"OMG... 在麥塊PVP界裡, 你是位菁英玩家啊!!!":"靠杯, 這一定不是你自己點出來的=_="                 
     alert("你的CPS為: "+CPS_STR+"\n\n"+Achievement);
+    leaderboard.push({used_time: mode, cps: CPS_STR})
+    localStorage.setItem("leaderboard", JSON.stringify(leaderboard))
 
+    refreshLeaderboard();
     ResetAll();
     // location.reload();  
+}
+
+function refreshLeaderboard(){  
+    $("table").empty();
+    $("table").append("<tr><td>CPS</td> <td>使用秒數</td></tr>")
+    for(let i=0; i<leaderboard.length; i++){
+        for(let j=0; j<leaderboard.length-1; j++){
+            if (parseInt(leaderboard[j].cps) < parseInt(leaderboard[j+1].cps)){
+                let temp = leaderboard[j];
+                leaderboard[j] = leaderboard[j+1];
+                leaderboard[j+1] = temp;
+            }
+        }
+    }
+
+    leaderboard.forEach(function(data) {
+        $("table").append("<tr><td>"+data.cps+"</td> <td>"+data.used_time+"</td></tr>")
+    })
 }
 
 function ResetAll(){
