@@ -8,6 +8,7 @@ let buttonRed = 0;
 let leaderboard = []
 
 leaderboard = JSON.parse(localStorage.getItem("leaderboard"));
+leaderboard = leaderboard == null ? [] : leaderboard;
 setTimeout(refreshLeaderboard, 1);
 
 function changeSec(sec){
@@ -82,11 +83,13 @@ function Complate(){
 }
 
 function refreshLeaderboard(){  
+    if(leaderboard == null) return;
+
     $("table").empty();
     $("table").append("<tr><td>CPS</td> <td>使用秒數</td></tr>")
     for(let i=0; i<leaderboard.length; i++){
         for(let j=0; j<leaderboard.length-1; j++){
-            if (parseInt(leaderboard[j].cps) < parseInt(leaderboard[j+1].cps)){
+            if (parseFloat(leaderboard[j].cps) < parseFloat(leaderboard[j+1].cps)){
                 let temp = leaderboard[j];
                 leaderboard[j] = leaderboard[j+1];
                 leaderboard[j+1] = temp;
@@ -97,6 +100,7 @@ function refreshLeaderboard(){
     leaderboard.forEach(function(data) {
         $("table").append("<tr><td>"+data.cps+"</td> <td>"+data.used_time+"</td></tr>")
     })
+    $("leaderboard")
 }
 
 function ResetAll(){

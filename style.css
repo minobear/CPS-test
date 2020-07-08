@@ -1,6 +1,10 @@
 .button{
     text-align: center;
 }
+#clear{
+    display: flex;  
+    justify-content: center;
+}
 #leaderboard{
     display: flex;  
     justify-content: center;
