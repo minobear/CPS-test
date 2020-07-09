@@ -23,7 +23,7 @@ function changeSec(sec){
 
 function Click(){
     let clickCount = document.getElementById("clickCount");
-    let clickButton = document.getElementById("clickButton");
+    let clickButton = document.getElementById("clickButton");   
 
     buttonSize+=0.1;
     buttonRed+=1;
@@ -35,6 +35,10 @@ function Click(){
     clickCount.innerHTML = count+=1;   
     clickButton.style.fontSize = buttonSizeStr;
     clickButton.style.color = "rgb("+buttonRed+",0,0)";
+
+    let clickSound = new Audio("sound/hit_sound.ogg")
+    clickSound.volume = 0.7;
+    clickSound.play();
 }
 
 function StartCount(){
@@ -74,7 +78,10 @@ function Complate(){
     const CPS_STR = CPS%1==0?CPS+".0":CPS;
     const Achievement = CPS<7?"在麥塊PVP界裡, 你只是個菜鳥...":CPS<9?"在麥塊PVP界裡, 你只是個普通人和大家差不多":CPS<11?"在麥塊PVP界裡, 你比普遍的人還強了呢!":CPS<15?"在麥塊PVP界裡, 你是位中高等級的玩家!":CPS<18?"在麥塊PVP界裡, 你已經是個高手了!!":CPS<25?"OMG... 在麥塊PVP界裡, 你是位菁英玩家啊!!!":"靠杯, 這一定不是你自己點出來的=_="                 
     alert("你的CPS為: "+CPS_STR+"\n\n"+Achievement);
-    leaderboard.push({used_time: mode, cps: CPS_STR})
+
+    let today = new Date();
+    let currentDateTime = today.getFullYear()+'年'+(today.getMonth()+1)+'月'+today.getDate()+'日('+today.getHours()+':'+today.getMinutes()+')';
+    leaderboard.push({used_time: mode, cps: CPS_STR, time: currentDateTime})
     localStorage.setItem("leaderboard", JSON.stringify(leaderboard))
 
     refreshLeaderboard();
@@ -82,11 +89,18 @@ function Complate(){
     // location.reload();  
 }
 
-function refreshLeaderboard(){  
+function refreshLeaderboard(){    
+    leaderboard.forEach(function(v, k){
+        if (!v.used_time || !v.cps || !v.time){
+            leaderboard.splice(k, 1);
+            localStorage.setItem("leaderboard", JSON.stringify(leaderboard))
+        }
+    })
+
     if(leaderboard == null) return;
 
     $("table").empty();
-    $("table").append("<tr><td>CPS</td> <td>使用秒數</td></tr>")
+    $("table").append("<tr><td>CPS</td><td>使用秒數</td><td>日期/時間</td></tr>");
     for(let i=0; i<leaderboard.length; i++){
         for(let j=0; j<leaderboard.length-1; j++){
             if (parseFloat(leaderboard[j].cps) < parseFloat(leaderboard[j+1].cps)){
@@ -98,9 +112,8 @@ function refreshLeaderboard(){
     }
 
     leaderboard.forEach(function(data) {
-        $("table").append("<tr><td>"+data.cps+"</td> <td>"+data.used_time+"</td></tr>")
+        $("table").append("<tr><td>"+data.cps+"</td> <td>"+data.used_time+"</td><td>"+data.time+"</td></tr>");
     })
-    $("leaderboard")
 }
 
 function clearLeaderboard(){
